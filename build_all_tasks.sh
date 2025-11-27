@@ -1,4 +1,7 @@
 #!/bin/bash
+# Copyright 2025 German Cancer Research Center (DKFZ) and contributors.
+# SPDX-License-Identifier: Apache-2.0
+
 # !! This is not relevant for EUCAIM !!!
 # List TASK_NAMES here
 TASK_NAMES=(

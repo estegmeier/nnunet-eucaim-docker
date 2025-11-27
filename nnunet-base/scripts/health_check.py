@@ -1,3 +1,5 @@
+# Copyright 2025 German Cancer Research Center (DKFZ) and contributors.
+# SPDX-License-Identifier: Apache-2.0
 import os, sys
 
 def is_healthy():

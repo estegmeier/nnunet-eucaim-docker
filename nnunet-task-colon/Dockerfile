@@ -1,3 +1,6 @@
+# Copyright 2025 German Cancer Research Center (DKFZ) and contributors.
+# SPDX-License-Identifier: Apache-2.0
+
 # Dockerfile for nnUNet task images
 # Author: Ashis Ravindran, DKFZ
 # Builds image nnunet:base

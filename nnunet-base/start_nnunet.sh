@@ -1,4 +1,6 @@
 #!/bin/bash
+# Copyright 2025 German Cancer Research Center (DKFZ) and contributors.
+# SPDX-License-Identifier: Apache-2.0
 
 python /app/scripts/convert_dcm2nifti.py
 if [[ "$MULTI_MODAL" == False ]]; then

@@ -1,3 +1,6 @@
+# Copyright 2025 German Cancer Research Center (DKFZ) and contributors.
+# SPDX-License-Identifier: Apache-2.0
+
 import shutil
 import os
 import json
