@@ -1,7 +1,7 @@
 # nnUNet EUCAIM Docker
 Copyright (c) [German Cancer Research Center (DKFZ)](https://www.dkfz.de). All rights reserved.
 Please make sure that your usage of this code is in compliance with its [license](LICENSE).
-
+This project is supported by EUCAIM grant number is 101100633.
 
 This repository provides Docker images for running [nnUNet](https://github.com/MIC-DKFZ/nnUNet/tree/nnunetv1) inference in a reproducible and containerized environment, tailored for the EUCAIM project.
 
