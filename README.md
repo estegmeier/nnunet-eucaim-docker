@@ -45,12 +45,11 @@ docker run \
 ```
 
 ## Data Format Conventions
-* All input files must be 3D NIfTI files (.nii.gz).
+* All input must as DICOM series folders.
 * All files in the input folder will be processed in batch.
 * Output files are written with identical filenames into the output folder.
 
 ### File Naming
-nnUNet follows specific naming conventions, especially important for multi-modal tasks:
 
 * Mono-modal tasks (e.g., `nnunet-liver-tumour`)
 The container automatically adjusts file names if needed, so the user can provide files with simple names like `image01.nii.gz`.
