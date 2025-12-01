@@ -65,5 +65,5 @@ if __name__ == "__main__":
         convert_to_dcmseg(mitk_json_file)
     shutil.rmtree(nnUNet_seg_dir) # delete tmp directory
 
-    nnUNet_data_dir = Path(nnunet_input_dir).joinpath('nnunet_data_dir')
+    nnUNet_data_dir = Path(dataset_dir).joinpath('nnunet_data_dir')
     shutil.rmtree(nnUNet_data_dir)

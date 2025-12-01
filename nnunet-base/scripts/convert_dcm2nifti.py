@@ -61,7 +61,8 @@ def process_input_file(dcm_series_paths:list, convert_output_dir:Path, json_outp
 if __name__ == "__main__":
     folder = Path(dataset_dir)
     subfolders = [f for f in folder.iterdir() if f.is_dir()]
-    nnUNet_data_dir = folder.joinpath('nnunet_data_dir')
+    
+    nnUNet_data_dir = Path(nnunet_output_dir).joinpath('nnunet_data_dir')
     nnUNet_data_dir.mkdir(exist_ok=True)
 
     nnunet_output_dir = Path(nnunet_output_dir).joinpath('tmp')
