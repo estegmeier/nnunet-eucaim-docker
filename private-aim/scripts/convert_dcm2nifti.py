@@ -58,7 +58,10 @@ def process_input_file(dcm_series_paths:list, convert_output_dir:Path, json_outp
             print("\nStandard Error (if any):")
             print(output.stderr)
 
-if __name__ == "__main__":
+
+def main():
+    global dataset_dir, nnunet_output_dir
+
     folder = Path(dataset_dir)
     subfolders = [f for f in folder.iterdir() if f.is_dir()]
     
@@ -69,3 +72,7 @@ if __name__ == "__main__":
     nnunet_output_dir.mkdir(exist_ok=True)
 
     process_input_file(subfolders, nnUNet_data_dir, nnunet_output_dir)
+
+
+if __name__ == "__main__":
+    main()
