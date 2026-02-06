@@ -58,6 +58,8 @@ def convert_to_dcmseg(json_file_path: Path):
         print("\nStandard Error (if any):")
         print(output.stderr)
 
+    return Path(dcm_output_filepath)
+
 if __name__ == "__main__":
     nnUNet_seg_dir = Path(dataset_dir).joinpath('tmp')
     mitk_json_filepaths = list(nnUNet_seg_dir.rglob("*.mitklabel.json"))
