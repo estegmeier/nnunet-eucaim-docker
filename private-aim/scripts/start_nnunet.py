@@ -44,25 +44,24 @@ class nnUNetAnalyzer(StarAnalyzer):
         for idx, entry in enumerate(data):
             # Handle dict {filename: bytes} or raw bytes
             if isinstance(entry, dict):
-                key = list(entry.keys())[0]
-                content = entry[key]
-                filename = os.path.basename(key)
+                items = entry.items()
             else:
-                content = entry
-                filename = f"input_file_{idx}"
+                items = [(f"input_file_{idx}", entry)]
 
-            file_path = Path(self.nnUNet_input) / filename
+            for key, content in items:
+                filename = os.path.basename(key)
+                file_path = Path(self.nnUNet_input) / filename
 
-            # Try to interpret as TAR archive
-            try:
-                tar_obj = BytesIO(content)
-                with tarfile.open(fileobj=tar_obj) as tar:
-                    tar.extractall(path=self.nnUNet_input)
-                print(f"[{idx}] Extracted TAR archive to {self.nnUNet_input}")
-            except tarfile.ReadError:
-                with open(file_path, "wb") as f:
-                    f.write(content)
-                print(f"[{idx}] Wrote raw input file: {file_path}")
+                # Try to interpret as TAR archive
+                try:
+                    tar_obj = BytesIO(content)
+                    with tarfile.open(fileobj=tar_obj) as tar:
+                        tar.extractall(path=self.nnUNet_input)
+                    print(f"[{idx}] Extracted TAR archive to {self.nnUNet_input}: {filename}")
+                except tarfile.ReadError:
+                    with open(file_path, "wb") as f:
+                        f.write(content)
+                    print(f"[{idx}] Wrote raw input file: {file_path}")
 
 
     def prepare_nnunet_input(self, nnUNet_input, data_dir):
