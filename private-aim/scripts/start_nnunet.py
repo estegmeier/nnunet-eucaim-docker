@@ -1,3 +1,4 @@
+import argparse
 import convert_dcm2nifti
 import convert_nifti2dcmseg
 from io import BytesIO
@@ -225,7 +226,7 @@ class MyAggregator(StarAggregator):
         return analysis_results
     
 
-    def has_converged(self, result, last_result, num_iterations):
+    def has_converged(self, result, last_result, num_iterations=None):
         """
         Checks whether the analysis has converged if 'simple_analysis' in 'StarModel' is set to False.
         Always returns True, since only one iteration round is performed.  
@@ -240,10 +241,17 @@ def main():
     Entry point to initialize and run the StarModel pipeline with nnUNetAnalyzer.
     Parses console arguments and passes them to MyAnalyzer.
     """
+    parser = argparse.ArgumentParser(description="Run StarModel pipeline with custom analyzer parameters.")
+    parser.add_argument("--query_key", type=str, default=None, help="Optional S3 query key for StarModel")
+
+    args, unknown = parser.parse_known_args()
+    query = [args.query_key] if args.query_key else []
+
     StarModel(
         analyzer=nnUNetAnalyzer,
         aggregator=MyAggregator,
         data_type="s3",
+        query=query,
         simple_analysis=True,
         output_type="bytes"
     )
